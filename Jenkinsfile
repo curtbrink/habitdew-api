@@ -29,7 +29,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 // Deploy your app if needed (e.g., to a staging server)
-                sh 'echo This is where a deploy would go'
+                sh 'echo This is where a deploy would go and this is also a test'
             }
         }
     }
