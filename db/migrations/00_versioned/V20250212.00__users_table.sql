@@ -6,7 +6,6 @@ create table user_account (
     updated_at timestamptz default now(),
     updated_by uuid references user_account,
     deleted_at timestamptz,
-    deleted_by uuid references user_account,
     data_version int default 1,
     -- user schema
     name varchar not null,
