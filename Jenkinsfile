@@ -57,7 +57,7 @@ pipeline {
             when { branch 'main' }
             steps {
                 script {
-                    def containerExists = sh(script: "docker ps -q -f name=${env.HD_NAME}", returnStdout: true).trim()
+                    def containerExists = sh(script: "docker ps -a -q -f name=${env.HD_NAME}", returnStdout: true).trim()
                     if (containerExists) {
                         // Stop and remove container if it's running
                         sh "docker stop ${env.HD_NAME}"
