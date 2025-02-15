@@ -74,7 +74,7 @@ pipeline {
             steps {
                 script {
                     // recreate container with new image
-                    sh "docker run -d -p 28602:28602 --name ${env.HD_NAME} ${env.HD_NAME}:${env.HD_VERSION} --add-host=host.docker.internal:host-gateway"
+                    sh "docker run -d -p 28602:28602 --add-host=host.docker.internal:host-gateway --name ${env.HD_NAME} ${env.HD_NAME}:${env.HD_VERSION}"
                 }
             }
         }
