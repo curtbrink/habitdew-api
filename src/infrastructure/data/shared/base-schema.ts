@@ -1,6 +1,6 @@
 import { EntitySchemaOptions } from 'typeorm';
-import { IBaseEntity } from './base-entity';
-import { UserAccount } from './user-account/user-account.entity';
+import { IBaseEntity } from '../../../domain/shared/base-entity';
+import { UserAccount } from '../../../domain/user-account/user-account.entity';
 
 export const BaseSchema: Pick<
   EntitySchemaOptions<IBaseEntity<string>>,

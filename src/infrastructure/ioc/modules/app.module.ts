@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { SnakeNamingStrategy } from 'typeorm-naming-strategies';
-import { UserAccountSchema } from './user-account/user-account.schema';
+import { InfrastructureModule } from './layers/app.infrastructure.module';
+import { DomainModule } from './layers/app.domain.module';
+import { ApiModule } from './layers/app.api.module';
 
 @Module({
   imports: [
@@ -27,9 +27,11 @@ import { UserAccountSchema } from './user-account/user-account.schema';
       imports: [],
       inject: [],
     }),
-    TypeOrmModule.forFeature([UserAccountSchema]),
+    InfrastructureModule,
+    DomainModule,
+    ApiModule,
   ],
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [],
+  providers: [],
 })
 export class AppModule {}

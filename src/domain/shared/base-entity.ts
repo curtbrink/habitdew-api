@@ -1,5 +1,5 @@
-import { UserAccount, UserAccountId } from './user-account/user-account.entity';
-import { DeepPartial, HabitdewId } from './util';
+import { UserAccount, UserAccountId } from '../user-account/user-account.entity';
+import { DeepPartial, HabitdewId } from '../../util';
 
 type Constructor<T> = { new (): T };
 

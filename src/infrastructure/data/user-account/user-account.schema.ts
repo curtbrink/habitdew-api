@@ -1,6 +1,6 @@
 import { EntitySchema } from 'typeorm';
-import { UserAccount } from './user-account.entity';
-import { HabitdewEntitySchema } from 'src/habitdew-entity-schema';
+import { UserAccount } from '../../../domain/user-account/user-account.entity';
+import { HabitdewEntitySchema } from 'src/infrastructure/data/shared/habitdew-entity-schema';
 
 export const UserAccountSchema = new HabitdewEntitySchema<UserAccount>({
   name: 'UserAccount',

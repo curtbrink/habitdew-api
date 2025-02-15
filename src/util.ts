@@ -18,8 +18,7 @@ export declare type DeepPartial<T> =
             ? {
                 [K in keyof T['prototype']]?: DeepPartial<T['prototype'][K]>;
               }
-            : // eslint-disable-next-line @typescript-eslint/ban-types
-              T extends object
+            : T extends object
               ? {
                   [K in keyof T]?: DeepPartial<T[K]>;
                 }

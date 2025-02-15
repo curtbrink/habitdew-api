@@ -1,4 +1,4 @@
-import { IBaseEntity } from 'src/base-entity';
+import { IBaseEntity } from 'src/domain/shared/base-entity';
 import { HabitdewId } from 'src/util';
 
 export type UserAccountId = HabitdewId<'UserAccount'>;
