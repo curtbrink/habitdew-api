@@ -4,13 +4,19 @@ import { SnakeNamingStrategy } from 'typeorm-naming-strategies';
 import { InfrastructureModule } from './layers/app.infrastructure.module';
 import { DomainModule } from './layers/app.domain.module';
 import { ApiModule } from './layers/app.api.module';
+import { ConfigModule, ConfigType } from '@nestjs/config';
+import databaseConfig from 'src/infrastructure/config/database.config';
 
 @Module({
   imports: [
+    ConfigModule.forRoot({
+      isGlobal: true,
+      load: [databaseConfig],
+    }),
     TypeOrmModule.forRootAsync({
-      useFactory: () => ({
+      useFactory: (dbConfig: ConfigType<typeof databaseConfig>) => ({
         type: 'postgres',
-        url: `postgresql://postgres:postgres@localhost:5432/postgres`,
+        url: `postgresql://${dbConfig.postgres.user}:${dbConfig.postgres.password}@${dbConfig.postgres.host}:${dbConfig.postgres.port}/${dbConfig.postgres.database}`,
         entities: ['dist/**/*.schema.{ts,js}'],
         synchronize: false,
         namingStrategy: new SnakeNamingStrategy(),
@@ -24,8 +30,8 @@ import { ApiModule } from './layers/app.api.module';
           query_timeout: 60_000,
         },
       }),
-      imports: [],
-      inject: [],
+      imports: [ConfigModule],
+      inject: [databaseConfig.KEY],
     }),
     InfrastructureModule,
     DomainModule,
