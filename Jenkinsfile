@@ -3,6 +3,12 @@ pipeline {
 
     environment {
         BRANCH_NAME = "${env.BRANCH_NAME}"
+
+        TEST_DB_USER = credentials('test-db-user');
+        TEST_DB_PASS = credentials('test-db-password');
+        TEST_DB_HOST = "host.docker.internal";
+        TEST_DB_PORT = "5432";
+        TEST_DB_DATABASE = "postgres";
     }
 
     stages {
@@ -39,6 +45,20 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'npm run build'
+            }
+        }
+
+        stage('Generate env file') {
+            when { branch 'main' }
+            steps {
+                script {
+                    sh "touch .env"
+                    sh "echo \"DB_HOST=$TEST_DB_HOST\" >> .env"
+                    sh "echo \"DB_USER=$TEST_DB_USER\" >> .env"
+                    sh "echo \"DB_PASSWORD=$TEST_DB_PASS\" >> .env"
+                    sh "echo \"DB_DATABASE=$TEST_DB_DATABASE\" >> .env"
+                    sh "echo \"DB_PORT=$TEST_DB_PORT\" >> .env"
+                }
             }
         }
 
