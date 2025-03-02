@@ -52,12 +52,12 @@ pipeline {
             when { branch 'main' }
             steps {
                 script {
-                    sh "touch .env"
-                    sh "echo \"DB_HOST=$TEST_DB_HOST\" >> .env"
-                    sh "echo \"DB_USER=$TEST_DB_USER\" >> .env"
-                    sh "echo \"DB_PASSWORD=$TEST_DB_PASS\" >> .env"
-                    sh "echo \"DB_DATABASE=$TEST_DB_DATABASE\" >> .env"
-                    sh "echo \"DB_PORT=$TEST_DB_PORT\" >> .env"
+                    sh 'touch .env'
+                    sh 'echo \"DB_HOST=$TEST_DB_HOST\" >> .env'
+                    sh 'echo \"DB_USER=$TEST_DB_USER\" >> .env'
+                    sh 'echo \"DB_PASSWORD=$TEST_DB_PASS\" >> .env'
+                    sh 'echo \"DB_DATABASE=$TEST_DB_DATABASE\" >> .env'
+                    sh 'echo \"DB_PORT=$TEST_DB_PORT\" >> .env'
                 }
             }
         }
