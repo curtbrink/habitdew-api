@@ -9,4 +9,8 @@ export class UserAccountService {
   async getAllUsers(): Promise<UserAccount[]> {
     return this.userAccountRepo.getAll();
   }
+
+  async getUserByUsername(username: string): Promise<UserAccount | null> {
+    return this.userAccountRepo.findByUsername(username);
+  }
 }

@@ -6,6 +6,7 @@ import { DomainModule } from './layers/app.domain.module';
 import { ApiModule } from './layers/app.api.module';
 import { ConfigModule, ConfigType } from '@nestjs/config';
 import databaseConfig from 'src/infrastructure/config/database.config';
+import { AuthModule } from './layers/app.auth.module';
 
 @Module({
   imports: [
@@ -36,6 +37,7 @@ import databaseConfig from 'src/infrastructure/config/database.config';
     InfrastructureModule,
     DomainModule,
     ApiModule,
+    AuthModule,
   ],
   controllers: [],
   providers: [],

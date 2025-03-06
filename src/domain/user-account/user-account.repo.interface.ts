@@ -6,4 +6,6 @@ import { UserAccount, UserAccountId } from './user-account.entity';
 export abstract class IUserAccountRepo extends IBaseRepository<
   UserAccount,
   UserAccountId
-> {}
+> {
+  abstract findByUsername(username: string): Promise<UserAccount | null>;
+}

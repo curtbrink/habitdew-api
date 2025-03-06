@@ -5,4 +5,6 @@ export abstract class IBaseRepository<
   IdType extends HabitdewId<string>,
 > {
   abstract getAll(): Promise<Entity[]>;
+
+  abstract getById(id: IdType): Promise<Entity | null>;
 }

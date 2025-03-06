@@ -13,4 +13,16 @@ export abstract class BaseRepository<
   getAll(): Promise<Entity[]> {
     return this.baseRepository.find();
   }
+
+  async getById(id: IdType): Promise<Entity | null> {
+    if (!id) {
+      throw new Error('id is required');
+    }
+    const [entity] = await this.baseRepository.find({
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+      where: { id: id as any },
+    });
+
+    return entity ?? null;
+  }
 }

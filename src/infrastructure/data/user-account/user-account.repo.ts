@@ -20,4 +20,9 @@ export class UserAccountRepo
   ) {
     super(repo);
   }
+
+  async findByUsername(username: string): Promise<UserAccount | null> {
+    const [user] = await this.repo.find({ where: { name: username } });
+    return user ?? null;
+  }
 }
