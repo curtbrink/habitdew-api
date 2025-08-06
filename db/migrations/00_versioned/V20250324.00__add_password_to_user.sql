@@ -1,0 +1,1 @@
+alter table user_account add column password_hash varchar;

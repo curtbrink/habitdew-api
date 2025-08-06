@@ -8,4 +8,5 @@ export class UserAccount extends IBaseEntity<UserAccountId> {
   displayName: string;
   email: string;
   isAdmin: boolean;
+  passwordHash: string;
 }
